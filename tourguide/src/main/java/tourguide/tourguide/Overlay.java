@@ -80,6 +80,7 @@ public class Overlay {
         mEnterAnimation = enterAnimation;
         return this;
     }
+
     /**
      * Set exit animation
      * @param exitAnimation
@@ -112,7 +113,6 @@ public class Overlay {
         mHoleRadius = holeRadius;
         return this;
     }
-
 
     /**
      * This method sets offsets to the hole's position relative the position of the targeted view.
