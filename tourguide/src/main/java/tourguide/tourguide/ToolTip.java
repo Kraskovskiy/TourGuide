@@ -13,13 +13,14 @@ import android.view.animation.BounceInterpolator;
  */
 public class ToolTip {
     public String mTitle, mDescription;
-    public int mBackgroundColor, mTextColor;
+    public int mBackgroundColor, mTextColor, mTextColorDescription;
     public Animation mEnterAnimation, mExitAnimation;
     public boolean mShadow;
     public int mGravity;
     public View.OnClickListener mOnClickListener;
     public ViewGroup mCustomView;
     public int mWidth;
+    public int mCornerRadius = 6;
 
     public ToolTip(){
         /* default values */
@@ -27,6 +28,7 @@ public class ToolTip {
         mDescription = "";
         mBackgroundColor = Color.parseColor("#3498db");
         mTextColor = Color.parseColor("#FFFFFF");
+        mTextColorDescription = Color.parseColor("#FFFFFF");
 
         mEnterAnimation = new AlphaAnimation(0f, 1f);
         mEnterAnimation.setDuration(1000);
@@ -124,6 +126,14 @@ public class ToolTip {
     public ToolTip setWidth(int px){
         if(px >= 0) mWidth = px;
         return this;
+    }
+
+    public void setCornerRadius(int cornerRadius) {
+        this.mCornerRadius = cornerRadius;
+    }
+
+    public void setTextColorDescription(int textColorDescription) {
+        this.mTextColorDescription = textColorDescription;
     }
 
     public ToolTip setOnClickListener(View.OnClickListener onClickListener){

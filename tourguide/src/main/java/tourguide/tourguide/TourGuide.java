@@ -7,6 +7,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.view.ViewCompat;
 import android.os.Build;
 import android.util.Log;
@@ -244,15 +245,20 @@ public class TourGuide {
             LayoutInflater layoutInflater = mActivity.getLayoutInflater();
 
             if (mToolTip.getCustomView() == null) {
-                mToolTipViewGroup = layoutInflater.inflate(R.layout.tooltip, null);
+                mToolTipViewGroup = layoutInflater.inflate(R.layout.tooltip_rounded, null);
                 View toolTipContainer = mToolTipViewGroup.findViewById(R.id.toolTip_container);
                 TextView toolTipTitleTV = (TextView) mToolTipViewGroup.findViewById(R.id.title);
                 TextView toolTipDescriptionTV = (TextView) mToolTipViewGroup.findViewById(R.id.description);
 
                 /* set tooltip attributes */
-                toolTipContainer.setBackgroundColor(mToolTip.mBackgroundColor);
+                //toolTipContainer.setBackgroundColor(mToolTip.mBackgroundColor);
+                GradientDrawable gd = new GradientDrawable();
+                gd.setColor(mToolTip.mBackgroundColor);
+                gd.setCornerRadius(mToolTip.mCornerRadius);
+                toolTipContainer.setBackgroundDrawable(gd);
+
                 toolTipTitleTV.setTextColor(mToolTip.mTextColor);
-                toolTipDescriptionTV.setTextColor(mToolTip.mTextColor);
+                toolTipDescriptionTV.setTextColor(mToolTip.mTextColorDescription);
 
                 if (mToolTip.mTitle == null || mToolTip.mTitle.isEmpty()) {
                     toolTipTitleTV.setVisibility(View.GONE);
@@ -278,9 +284,9 @@ public class TourGuide {
             mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
 
             /* add setShadow if it's turned on */
-            if (mToolTip.mShadow) {
+         /*   if (mToolTip.mShadow) {
                 mToolTipViewGroup.setBackgroundDrawable(mActivity.getResources().getDrawable(R.drawable.drop_shadow));
-            }
+            }*/
 
             /* position and size calculation */
             int [] pos = new int[2];
