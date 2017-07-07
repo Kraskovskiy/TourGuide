@@ -128,12 +128,14 @@ public class ToolTip {
         return this;
     }
 
-    public void setCornerRadius(int cornerRadius) {
+    public ToolTip setCornerRadius(int cornerRadius) {
         this.mCornerRadius = cornerRadius;
+        return this;
     }
 
-    public void setTextColorDescription(int textColorDescription) {
+    public ToolTip setTextColorDescription(int textColorDescription) {
         this.mTextColorDescription = textColorDescription;
+        return this;
     }
 
     public ToolTip setOnClickListener(View.OnClickListener onClickListener){
