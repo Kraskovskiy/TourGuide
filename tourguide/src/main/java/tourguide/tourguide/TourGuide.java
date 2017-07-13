@@ -272,6 +272,7 @@ public class TourGuide {
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
                     toolTipDescriptionTV.setText(mToolTip.mDescription);
+                    //toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii rgbrrrggggg oooooooooooooooooooooooooo pppppppppppppppppppp qqqqqqqqqqqqqqqqqqqqqqqqqqq   qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
                 }
 
                 if (mToolTip.mWidth != -1){
