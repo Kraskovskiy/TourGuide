@@ -272,7 +272,7 @@ public class TourGuide {
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
                     toolTipDescriptionTV.setText(mToolTip.mDescription);
-                    //toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii rgbrrrggggg oooooooooooooooooooooooooo pppppppppppppppppppp qqqqqqqqqqqqqqqqqqqqqqqqqqq   qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
+                   // toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii rgbrrrggggg oooooooooooooooooooooooooo pppppppppppppppppppp qqqqqqqqqqqqqqqqqqqqqqqqqqq   qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
                 }
 
                 if (mToolTip.mWidth != -1){
@@ -296,7 +296,8 @@ public class TourGuide {
             final int targetViewY = pos[1];
 
             // get measured size of tooltip
-            mToolTipViewGroup.measure(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+            mToolTipViewGroup.measure(View.MeasureSpec.makeMeasureSpec(parent.getWidth(), View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(parent.getHeight(), View.MeasureSpec.AT_MOST));
+           // mToolTipViewGroup.measure(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
             int toolTipMeasuredWidth = mToolTip.mWidth != -1 ? mToolTip.mWidth : mToolTipViewGroup.getMeasuredWidth();
             int toolTipMeasuredHeight = mToolTipViewGroup.getMeasuredHeight();
 
@@ -387,11 +388,17 @@ public class TourGuide {
             } else {
                 y =  targetViewY - toolTipMeasuredHeight - (int)adjustment;
             }
-        } else { // this is center
+        } else if ((gravity & Gravity.BOTTOM) == Gravity.BOTTOM) {
             if (((gravity & Gravity.LEFT) == Gravity.LEFT) || ((gravity & Gravity.RIGHT) == Gravity.RIGHT)) {
                 y =  targetViewY + mHighlightedView.getHeight() - (int) adjustment;
             } else {
                 y =  targetViewY + mHighlightedView.getHeight() + (int) adjustment;
+            }
+        } else { // this is center
+            if (((gravity & Gravity.LEFT) == Gravity.LEFT) || ((gravity & Gravity.RIGHT) == Gravity.RIGHT)) {
+                y =  targetViewY + mHighlightedView.getHeight() / 2 - (int) adjustment;
+            } else {
+                y =  targetViewY + mHighlightedView.getHeight() / 2 + (int) adjustment;
             }
         }
         return y;
