@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 
+
 /**
  * TODO: document your custom view class.
  */
@@ -56,12 +57,8 @@ public class FrameLayoutWithHole extends FrameLayout {
     }
 
     private void enforceMotionType() {
-        Log.d("tourguide", "enforceMotionType 1");
         if (mViewHole != null) {
-            Log.d("tourguide", "enforceMotionType 2");
             if (mMotionType != null && mMotionType == TourGuide.MotionType.CLICK_ONLY) {
-                Log.d("tourguide", "enforceMotionType 3");
-                Log.d("tourguide", "only Clicking");
                 mViewHole.setOnTouchListener(new OnTouchListener() {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -70,8 +67,6 @@ public class FrameLayoutWithHole extends FrameLayout {
                     }
                 });
             } else if (mMotionType != null && mMotionType == TourGuide.MotionType.SWIPE_ONLY) {
-                Log.d("tourguide", "enforceMotionType 4");
-                Log.d("tourguide", "only Swiping");
                 mViewHole.setClickable(false);
             }
         }
@@ -147,10 +142,6 @@ public class FrameLayoutWithHole extends FrameLayout {
         mEraser.setColor(0xFFFFFFFF);
         mEraser.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         mEraser.setFlags(Paint.ANTI_ALIAS_FLAG);
-
-        Log.d("tourguide", "getHeight: " + size.y);
-        Log.d("tourguide", "getWidth: " + size.x);
-
     }
 
     private boolean mCleanUpLock = false;
@@ -256,7 +247,6 @@ public class FrameLayoutWithHole extends FrameLayout {
 //            Log.d("tourguide", "[dispatchTouchEvent] Y higher bound: "+(pos[1] +mViewHole.getHeight()));
 
             if (isWithinButton(ev) && mOverlay != null && mOverlay.mDisableClickThroughHole) {
-                Log.d("tourguide", "block user clicking through hole");
                 // block it
                 return true;
             } else if (isWithinButton(ev)) {
@@ -285,8 +275,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         if (mOverlay != null) {
             mEraserCanvas.drawColor(mOverlay.mBackgroundColor);
             int padding = (int) (mOverlay.mPaddingDp * mDensity);
-            Log.i("TOURGUIDE", String.format("**********PADDING: %s**********", padding));
-
+            //Log.e("TAG", "onDraw: "+ mViewHole.getY() +" / ");
             if (mOverlay.mStyle == Overlay.Style.RECTANGLE) {
                 mEraserCanvas.drawRect(
                         mPos[0] - padding + mOverlay.mHoleOffsetLeft,
