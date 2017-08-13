@@ -282,12 +282,12 @@ public class TourGuide {
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
                     toolTipDescriptionTV.setText(mToolTip.mDescription);
-                    toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
+                    /*toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
                             "111qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "222qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "333qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "999qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
+                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");*/
                 }
 
                 if (mToolTip.mWidth != -1) {
@@ -374,20 +374,20 @@ public class TourGuide {
                     int fixedY;
                     int toolTipHeightAfterLayouted = mToolTipViewGroup.getHeight();
                     fixedY = getYForTooTip(mToolTip.mGravity, toolTipHeightAfterLayouted, targetViewY, adjustment);
-                  //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
+                    //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
                     // Log.e("TAG", "onGlobalLayout: " + targetViewY + " / " + mHighlightedView.getY());
                     layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, 0);
                 }
             });
 
-          //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
+            //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
             // set the position using setMargins on the left and top
             layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, mToolTip.getBottomMargin());
         }
     }
 
     private int fixBottomForLargeScreen(int targetViewY, int adjustment) {
-       // Log.e("TAG", "fixBottomForLargeScreen: targetViewY="+ targetViewY+" / adjustment="+adjustment+" / mHighlightedView.getY()= "+mHighlightedView.getTop());
+        // Log.e("TAG", "fixBottomForLargeScreen: targetViewY="+ targetViewY+" / adjustment="+adjustment+" / mHighlightedView.getY()= "+mHighlightedView.getTop());
         return (int) (targetViewY + adjustment - mHighlightedView.getY());
     }
 
@@ -442,7 +442,7 @@ public class TourGuide {
         fab.setColorNormal(mPointer.mColor);
         fab.setStrokeVisible(false);
         fab.setClickable(false);
-        fab.setVisibility(mPointer.isShowAnimation()?View.VISIBLE:View.GONE);
+        fab.setVisibility(mPointer.isShowAnimation() ? View.VISIBLE : View.GONE);
 
         // When invisFab is layouted, it's width and height can be used to calculate the correct position of fab
         invisFab.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
