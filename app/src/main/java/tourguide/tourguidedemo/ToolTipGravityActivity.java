@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 
 import tourguide.tourguide.Overlay;
@@ -45,6 +48,44 @@ public class ToolTipGravityActivity extends ActionBarActivity {
         }
         Button button = (Button)findViewById(R.id.button);
 
+
+        ToolTip toolTip = new ToolTip()
+                .setTitle("title")
+                .setWidth(650)
+                .setDescription("Click on Get Started to begin...")
+                .setTextColor(Color.RED)
+                .setTextColorDescription(Color.GRAY)
+                .setBackgroundColor(Color.WHITE)
+                .setShadow(true)
+                .setBottomMargin(50)
+                .setGravity(gravity)
+               // .setOnClickListener(null)
+                .setEnterAnimation(returnAnimation());
+
+        Overlay overlay = new Overlay()
+                .setStyle(Overlay.Style.CIRCLE)
+                .setHoleRadius(50)
+                .setHoleOffsets(0,0);
+               // .disableClickThroughHole(true);
+               // .setBackgroundColor(activity.getResources().getColor(R.color.colorTutorialBackgroundLight));
+
+        Pointer pointer = new Pointer().setShowAnimation(false);
+
+      /*  return TourGuide.init(activity).with(TourGuide.Technique.CLICK)
+                .setPointer(pointer)
+                // .setPointer(new Pointer())
+                .setToolTip(toolTip)
+                .setOverlay(overlay)
+                .playOn(view);*/
+
+        mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.CLICK)
+                .setPointer(pointer)
+               //  .setPointer(new Pointer())
+                .setToolTip(toolTip)
+                .setOverlay(overlay)
+                .playOn(button);
+
+/*
         ToolTip toolTip = new ToolTip().
                 setTitle("Welcome!").
                 setDescription("Click on Get Started to begin...").
@@ -54,10 +95,11 @@ public class ToolTipGravityActivity extends ActionBarActivity {
                 setShadow(true);
 
         mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.CLICK)
+              //  .setPointer(null)
                 .setPointer(new Pointer())
                 .setToolTip(toolTip)
                 .setOverlay(new Overlay())
-                .playOn(button);
+                .playOn(button);*/
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -65,5 +107,13 @@ public class ToolTipGravityActivity extends ActionBarActivity {
                 mTutorialHandler.cleanUp();
             }
         });
+    }
+
+    public static Animation returnAnimation() {
+        Animation animation = new TranslateAnimation(0f, 0f, 200f, 0f);
+        animation.setDuration(1000);
+        animation.setFillAfter(true);
+        animation.setInterpolator(new BounceInterpolator());
+        return animation;
     }
 }

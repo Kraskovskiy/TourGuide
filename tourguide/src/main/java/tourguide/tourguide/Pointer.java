@@ -9,6 +9,16 @@ import android.view.Gravity;
 public class Pointer {
     public int mGravity = Gravity.CENTER;
     public int mColor = Color.WHITE;
+    public boolean mShowAnimation = true;
+
+    public boolean isShowAnimation() {
+        return mShowAnimation;
+    }
+
+    public Pointer setShowAnimation(boolean mShowAnimation) {
+        this.mShowAnimation = mShowAnimation;
+        return this;
+    }
 
     public Pointer() {
         this(Gravity.CENTER, Color.parseColor("#FFFFFF"));

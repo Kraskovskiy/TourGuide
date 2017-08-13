@@ -220,7 +220,7 @@ public class TourGuide {
         /* setup floating action button */
         if (mPointer != null) {
             FloatingActionButton fab = setupAndAddFABToFrameLayout(mFrameLayout);
-            performAnimationOn(fab);
+            if (mPointer.isShowAnimation()) performAnimationOn(fab);
         }
         setupFrameLayout();
         /* setup tooltip view */
@@ -442,6 +442,7 @@ public class TourGuide {
         fab.setColorNormal(mPointer.mColor);
         fab.setStrokeVisible(false);
         fab.setClickable(false);
+        fab.setVisibility(mPointer.isShowAnimation()?View.VISIBLE:View.GONE);
 
         // When invisFab is layouted, it's width and height can be used to calculate the correct position of fab
         invisFab.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
