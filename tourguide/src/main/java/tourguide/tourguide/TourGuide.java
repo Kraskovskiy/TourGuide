@@ -320,7 +320,7 @@ public class TourGuide {
             mToolTipViewGroup.measure(View.MeasureSpec.makeMeasureSpec(parent.getWidth(), View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(parent.getHeight(), View.MeasureSpec.EXACTLY));
             // mToolTipViewGroup.measure(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
             int toolTipMeasuredWidth = mToolTip.mWidth != -1 ? mToolTip.mWidth : mToolTipViewGroup.getMeasuredWidth();
-            int toolTipMeasuredHeight = mToolTipViewGroup.getMeasuredHeight() >= parent.getHeight()-250 ? parent.getHeight()-250 : mToolTipViewGroup.getMeasuredHeight();
+            int toolTipMeasuredHeight = mToolTipViewGroup.getMeasuredHeight() >= parent.getHeight() - 250 ? parent.getHeight() - 250 : mToolTipViewGroup.getMeasuredHeight();
             //int toolTipMeasuredHeight = 250;
 
             Point resultPoint = new Point(); // this holds the final position of tooltip
@@ -381,7 +381,7 @@ public class TourGuide {
                     int toolTipHeightAfterLayouted = mToolTipViewGroup.getHeight();
                     fixedY = getYForTooTip(mToolTip.mGravity, toolTipHeightAfterLayouted, targetViewY, adjustment);
                     final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
-                   // Log.e("TAG", "onGlobalLayout: " + targetViewY + " / " + mHighlightedView.getY());
+                    // Log.e("TAG", "onGlobalLayout: " + targetViewY + " / " + mHighlightedView.getY());
                     layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, bottomMargin);
                 }
             });
