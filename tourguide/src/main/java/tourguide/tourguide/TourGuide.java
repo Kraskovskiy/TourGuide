@@ -388,7 +388,6 @@ public class TourGuide {
           //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
             // set the position using setMargins on the left and top
             layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, mToolTip.getBottomMargin());
-            Log.e("TAG", "fixBottomForLargeScreen: targetViewY="+ targetViewY+" / adjustment="+adjustment+" / mHighlightedView.getY()= "+mHighlightedView.getTop());
         }
     }
 
