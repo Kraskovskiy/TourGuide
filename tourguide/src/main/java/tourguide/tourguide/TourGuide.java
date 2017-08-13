@@ -49,6 +49,7 @@ public class TourGuide {
     public Pointer mPointer;
     public Overlay mOverlay;
 
+
     /*************
      * Public API
      *************/
@@ -251,6 +252,7 @@ public class TourGuide {
             ViewGroup parent = (ViewGroup) mActivity.getWindow().getDecorView();
             LayoutInflater layoutInflater = mActivity.getLayoutInflater();
 
+
             if (mToolTip.getCustomView() == null) {
                 mToolTipViewGroup = layoutInflater.inflate(R.layout.tooltip_rounded, null);
                 View toolTipContainer = mToolTipViewGroup.findViewById(R.id.toolTip_container);
@@ -279,7 +281,7 @@ public class TourGuide {
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
                     toolTipDescriptionTV.setText(mToolTip.mDescription);
-                    toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
+                  /*  toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
                             "rgbrrrggggg oooooooooooooooooooooooooo pppppppppppppppppppp qqqqqqqqqqqqqqqqqqqqqqqqqqq   " +
                             "111qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "222qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
@@ -291,7 +293,7 @@ public class TourGuide {
                             "888qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "999qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwww " +
-                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
+                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");*/
                 }
 
                 if (mToolTip.mWidth != -1) {
@@ -318,7 +320,7 @@ public class TourGuide {
             mToolTipViewGroup.measure(View.MeasureSpec.makeMeasureSpec(parent.getWidth(), View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(parent.getHeight(), View.MeasureSpec.EXACTLY));
             // mToolTipViewGroup.measure(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
             int toolTipMeasuredWidth = mToolTip.mWidth != -1 ? mToolTip.mWidth : mToolTipViewGroup.getMeasuredWidth();
-            int toolTipMeasuredHeight = mToolTipViewGroup.getMeasuredHeight() > 500 ? 500 : mToolTipViewGroup.getMeasuredHeight();
+            int toolTipMeasuredHeight = mToolTipViewGroup.getMeasuredHeight() >= parent.getHeight()-250 ? parent.getHeight()-250 : mToolTipViewGroup.getMeasuredHeight();
             //int toolTipMeasuredHeight = 250;
 
             Point resultPoint = new Point(); // this holds the final position of tooltip
@@ -384,8 +386,9 @@ public class TourGuide {
                 }
             });
 
+            final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
             // set the position using setMargins on the left and top
-            layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, 0);
+            layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, bottomMargin);
         }
     }
 
