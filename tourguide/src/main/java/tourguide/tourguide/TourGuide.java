@@ -282,7 +282,7 @@ public class TourGuide {
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
                     toolTipDescriptionTV.setText(mToolTip.mDescription);
-                    toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
+                    /*toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
                             "111qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "222qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "333qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
@@ -292,7 +292,7 @@ public class TourGuide {
                             "777qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "888qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "999qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
+                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");*/
                 }
 
                 if (mToolTip.mWidth != -1) {
@@ -379,20 +379,21 @@ public class TourGuide {
                     int fixedY;
                     int toolTipHeightAfterLayouted = mToolTipViewGroup.getHeight();
                     fixedY = getYForTooTip(mToolTip.mGravity, toolTipHeightAfterLayouted, targetViewY, adjustment);
-                    final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
+                  //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
                     // Log.e("TAG", "onGlobalLayout: " + targetViewY + " / " + mHighlightedView.getY());
-                    layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, bottomMargin);
+                    layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, mToolTip.getBottomMargin());
                 }
             });
 
-            final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
+          //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
             // set the position using setMargins on the left and top
-            layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, 100);
+            layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, mToolTip.getBottomMargin());
+            Log.e("TAG", "fixBottomForLargeScreen: targetViewY="+ targetViewY+" / adjustment="+adjustment+" / mHighlightedView.getY()= "+mHighlightedView.getTop());
         }
     }
 
     private int fixBottomForLargeScreen(int targetViewY, int adjustment) {
-        Log.e("TAG", "fixBottomForLargeScreen: targetViewY="+ targetViewY+" / adjustment="+adjustment+" / mHighlightedView.getY()= "+mHighlightedView.getY());
+       // Log.e("TAG", "fixBottomForLargeScreen: targetViewY="+ targetViewY+" / adjustment="+adjustment+" / mHighlightedView.getY()= "+mHighlightedView.getTop());
         return (int) (targetViewY + adjustment - mHighlightedView.getY());
     }
 

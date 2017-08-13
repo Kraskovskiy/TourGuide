@@ -21,6 +21,7 @@ public class ToolTip {
     public ViewGroup mCustomView;
     public int mWidth;
     public int mCornerRadius = 6;
+    public int bottomMargin = 0;
 
     public ToolTip(){
         /* default values */
@@ -40,6 +41,16 @@ public class ToolTip {
         // TODO: exit animation
         mGravity = Gravity.CENTER;
     }
+
+    public int getBottomMargin() {
+        return bottomMargin;
+    }
+
+    public ToolTip setBottomMargin(int bottomMargin) {
+        this.bottomMargin = bottomMargin;
+        return this;
+    }
+
     /**
      * Set title text
      * @param title
