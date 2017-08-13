@@ -282,17 +282,12 @@ public class TourGuide {
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
                     toolTipDescriptionTV.setText(mToolTip.mDescription);
-                    /*toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
+                    toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
                             "111qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "222qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "333qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "444qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "555qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "666qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "777qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "888qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "999qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
-                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");*/
+                            "wwwwwwwwwwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwwwwww");
                 }
 
                 if (mToolTip.mWidth != -1) {
@@ -381,7 +376,7 @@ public class TourGuide {
                     fixedY = getYForTooTip(mToolTip.mGravity, toolTipHeightAfterLayouted, targetViewY, adjustment);
                   //  final int bottomMargin = fixBottomForLargeScreen(targetViewY, (int) adjustment);
                     // Log.e("TAG", "onGlobalLayout: " + targetViewY + " / " + mHighlightedView.getY());
-                    layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, mToolTip.getBottomMargin());
+                    layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, 0);
                 }
             });
 
