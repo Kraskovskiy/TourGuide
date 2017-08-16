@@ -10,7 +10,6 @@ import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.view.ViewCompat;
 import android.os.Build;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -281,7 +280,16 @@ public class TourGuide {
                     toolTipDescriptionTV.setVisibility(View.GONE);
                 } else {
                     toolTipDescriptionTV.setVisibility(View.VISIBLE);
-                    toolTipDescriptionTV.setText(mToolTip.mDescription);
+
+                   /* final SpannableStringBuilder spannable = new SpannableStringBuilder(mToolTip.mDescription);
+                    spannable.setSpan(new ForegroundColorSpan(Color.BLUE), 0, mToolTip.mDescription.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);*/
+
+                    if (mToolTip.getSpannable() != null) {
+                        toolTipDescriptionTV.setText(mToolTip.getSpannable());
+                    } else {
+                        toolTipDescriptionTV.setText(mToolTip.mDescription);
+                    }
+
                     /*toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +
                             "111qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +
                             "222qqqqqqqqqqqqqqqqqqqqqqqqqqqq zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzz " +

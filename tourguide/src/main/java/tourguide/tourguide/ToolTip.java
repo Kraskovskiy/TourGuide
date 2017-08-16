@@ -1,6 +1,7 @@
 package tourguide.tourguide;
 
 import android.graphics.Color;
+import android.text.SpannableStringBuilder;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class ToolTip {
     public int mWidth;
     public int mCornerRadius = 6;
     public int bottomMargin = 0;
+    public SpannableStringBuilder mSpannable;
 
     public ToolTip(){
         /* default values */
@@ -160,6 +162,15 @@ public class ToolTip {
 
     public ToolTip setCustomView(ViewGroup view) {
         mCustomView = view;
+        return this;
+    }
+
+    public SpannableStringBuilder getSpannable() {
+        return mSpannable;
+    }
+
+    public ToolTip setSpannable(SpannableStringBuilder mSpannable) {
+        this.mSpannable = mSpannable;
         return this;
     }
 }
