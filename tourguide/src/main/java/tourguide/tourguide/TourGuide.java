@@ -10,6 +10,7 @@ import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.view.ViewCompat;
 import android.os.Build;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -288,6 +289,14 @@ public class TourGuide {
                         toolTipDescriptionTV.setText(mToolTip.getSpannable());
                     } else {
                         toolTipDescriptionTV.setText(mToolTip.mDescription);
+                    }
+
+                    if (mToolTip.getTitleFontSize() != -1) {
+                        toolTipTitleTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, mToolTip.getTitleFontSize());
+                    }
+
+                    if (mToolTip.getDescriptionsFontSize() != -1) {
+                        toolTipDescriptionTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, mToolTip.getDescriptionsFontSize());
                     }
 
                     /*toolTipDescriptionTV.setText("Xxzzzz zcccccccccccccccccccc vsdddddd svvvvvvvvvvvvvvvv geeeeeeeeeeeee iiiiiiiiiiiiiiiii " +

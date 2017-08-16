@@ -24,6 +24,8 @@ public class ToolTip {
     public int mCornerRadius = 6;
     public int bottomMargin = 0;
     public SpannableStringBuilder mSpannable;
+    public int mTitleFontSize = -1;
+    public int mDescriptionsFontSize = -1;
 
     public ToolTip(){
         /* default values */
@@ -171,6 +173,24 @@ public class ToolTip {
 
     public ToolTip setSpannable(SpannableStringBuilder mSpannable) {
         this.mSpannable = mSpannable;
+        return this;
+    }
+
+    public int getTitleFontSize() {
+        return mTitleFontSize;
+    }
+
+    public ToolTip setTitleFontSize(int mTitleFontSize) {
+        this.mTitleFontSize = mTitleFontSize;
+        return this;
+    }
+
+    public int getDescriptionsFontSize() {
+        return mDescriptionsFontSize;
+    }
+
+    public ToolTip setDescriptionsFontSize(int mDescriptionsFontSize) {
+        this.mDescriptionsFontSize = mDescriptionsFontSize;
         return this;
     }
 }
